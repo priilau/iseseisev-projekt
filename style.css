@@ -1,0 +1,245 @@
+.container {
+	font-family: 'Open Sans', sans-serif;
+    margin: 0 auto;
+	width: 900px;
+	background: #FFF;
+	padding: 8px;
+	min-height: 400px;
+	box-shadow: 0px 2px 5px #AFAFAF;
+	text-align: center;
+}
+
+.a2hs{
+	background-color: rgb(140, 130, 250);
+	border: solid;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.a2hs:hover{
+	background-color: rgb(100, 100, 250);
+  	color: white;
+}
+
+.content {
+	margin: 0 auto;
+	padding: 15px;
+	display: inline-block;
+}
+
+#change-page {
+	padding: 15px;
+}
+
+#friend-list {
+	min-width: 150px;
+	min-height: 300px;
+	max-width: 150px;
+	max-height: 300px;
+	background: rgb(190, 190, 250);
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	text-align: center;
+	border-style: solid;
+	border-color: rgb(50, 50, 50);
+	border-width: 2px;
+	border-top-left-radius: 10px;
+	padding: 10px;
+}
+#friend-list span{
+	padding: 2px;
+}
+#friend-list span:hover{
+	background: rgb(160, 160, 250);
+	border-radius: 5px;
+}
+
+#friend-list span:active{
+	background: rgb(100, 100, 250);
+	border-style: solid;
+	border-color: rgb(200, 200, 200);
+	border-width: 2px;
+	border-radius: 5px;
+}
+.friend{
+	overflow-wrap: break-word;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-radius: 5px;
+	background: rgb(140, 130, 250);
+}
+.friend.active {
+	background: rgb(190, 190, 190);
+	font-weight: bold; 
+}
+
+#chatbox{
+	min-width: 600px;
+	min-height: 300px;
+	max-width: 600px;
+	max-height: 300px;
+	text-align: center;
+    overflow-y: scroll;
+	overflow-x: hidden;
+	border-style: solid;
+	border-color: rgb(50, 50, 50);
+	border-width: 2px;
+	padding: 10px
+}
+#message{
+	overflow-wrap: break-word;
+}
+
+#message>#recieved-msg {
+	text-align: left;
+	padding: 15px;
+	background: rgb(190, 190, 190);
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+#message>#sent-msg {
+	text-align: right;
+	padding: 15px;
+	background: rgb(140, 130, 250);
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+
+#sent-msg~#timestamp{
+	font-size: 12px;
+	text-align: right;
+	padding-right: 5px; 
+	color: rgb(100, 100, 100);
+	font-style: italic;
+}
+#recieved-msg~#timestamp{
+	font-size: 12px;
+	text-align: left;
+	padding-left: 5px;
+	color: rgb(100, 100, 100);
+	font-style: italic;
+}
+
+#user-list{
+	min-width: 150px;
+	min-height: 200px;
+	max-width: 150px;
+	max-height: 200px;
+	background: rgb(190, 190, 250);
+	float: left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	text-align: center;
+	border-style: solid;
+	border-color: rgb(50, 50, 50);
+	border-width: 2px;
+	border-bottom-left-radius: 10px;
+	padding: 10px;
+}
+#add-user{
+	overflow-wrap: break-word;
+	padding: 3px;
+	border-radius: 5px;
+	background: rgb(140, 130, 250);
+}
+#button{
+	background-color:rgb(100, 100, 100);
+	border: none;
+	border-radius: 5px;
+	color: white;
+	padding: 3px 7px;
+	text-align: center;
+	font-size: 12px;
+	font-family: 'Open Sans', sans-serif;
+}
+#button:hover{
+	background-color: rgb(150, 150, 150);
+  	color: white;
+}
+
+#inputbox{
+	display: inline-block;
+	width: 600px;
+	height: 200px;
+	border-style: solid;
+	border-color: rgb(50, 50, 50);
+	border-width: 2px;
+	padding: 10px;
+	border-bottom-right-radius: 10px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#textarea{
+	padding: 10px;
+}
+
+#input-btns{
+	padding: 10px;
+}
+
+#big-btn{
+	background-color: rgb(140, 130, 250);
+	border: solid;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#big-btn:hover{
+	background-color: rgb(100, 100, 250);
+  	color: white;
+}
+
+#input{
+	width: 500px;
+	height: 100px;
+	resize: none;
+}
+
+@media only screen and (max-width: 900px) {
+.container{
+	width: 600px;
+}
+
+#friend-list{
+	font-size: 14px;
+	min-width: 100px;
+	min-height: 200px;
+	max-width: 100px;
+	max-height: 200px;
+}
+#chatbox{
+	font-size: 14px;
+	min-width: 420px;
+	min-height: 200px;
+	max-width: 420px;
+	max-height: 200px;
+}
+#user-list{
+	font-size: 14px;
+	min-width: 100px;
+	min-height: 150px;
+	max-width: 100px;
+	max-height: 150px;
+}
+#inputbox{
+	font-size: 14px;
+	min-width: 420px;
+	min-height: 150px;
+	max-width: 420px;
+	max-height: 150px;
+}
+#input{
+	width: 380px;
+	height: 60px;
+}
+}

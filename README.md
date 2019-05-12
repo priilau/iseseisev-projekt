@@ -1,25 +1,24 @@
-# iseseisev-projekt
-Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
+# Messenger
+Autor: Priit Laupa
 
-Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt sellele, mitu liiget on meeskonnas:
-* 1 liige - max 60 punkti/inimene.
-* 2 liiget - max 40 punkti/inimene.
-* 3 liiget - max 30 punkti/inimene.
-* 4 liiget - max 20 punkti/inimene.
+Tegemist on sõnumite saatmiseks mõeldud rakendus, mis kasutab andmebaase andmete hoidmiseks.
+Rakendus on ehitatud täielikult käsitsi, mingisuguseid teeke pole kasutatud, kasutatud on ainult internetis leiduvaid abimaterjale(Stack Overflow jms) ning eelmisel semestril kirjutatud koodi.
+Rakendus töötab enamjaolt hästi, esinevad mõningad kohad, mis langetavad rakenduse esteetilist välimust.
+Disaini poolelt on rakendus üsnagi minimalistlik.
 
-**NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
+Funktsionaalsused.
 
-README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
-1. ekraanitõmmist rakendusest.
+Saab index lehelt sisse logida, kasutaja puudumisel on link, millele vajutades suunatakse teisele lehele, kus saab kasutajat luua.
+Põhiprogramm asub main lehel, kus on sõbralist, olemasolevate kasutajate nimekiri, chatbox ja sõnumi saatmise kast.
+Hetkel saab ainult tekstilisi sõnumeid saata, piltide saatmist ei jõudnud lisada.
+Kasutaja loomisel parool hash'itakse, tulevikus plaan ka sõnumeid ja e-maile samuti hash'ida.
+Programmi on võimalik lisada koduekraanile.
+Sõnumite saatmine on ennast uuendav, st iga 2,5 sekundi tagant uuendab vestlust ennast ise, kui sõnumeid on juurde tulnud. Ise sõnumi saatmisel uueneb vestlus koheselt.
 
-Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:
-  * rakendus lahendab tõsist probleemi või on meelelahutusliku eesmärgiga; 
-  * rakenduse idee peab olema kooskõlastatud õppejõuga;
-  * töötab võrguta olekus;
-  * responsive disain;
-  * saab kasutada "add to Home screen" funktsionaalsust.
+RAKENDUS EI TÖÖTA VÕRGUTA OLEKUS!
 
-Rakenduses võib kasutada teiste autorite koodi, kuid enda panus peab olema natuke enamat kui võrguta olekus töötamine. 
+Pildid rakenduse lehtedest.
+
+https://drive.google.com/open?id=1hKQGdCT0HVAdpWFuXoAJkHHQdswrvS7r
+
+Rakendus asub lehel: https://caupo.ee/messenger

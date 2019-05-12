@@ -1,0 +1,22 @@
+{
+    "short_name": "Messenger",
+    "name": "Messenger",
+    "icons": [
+      {
+        "src": "/192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/messenger/index.php",
+    "background_color": "#FFF",
+    "display": "standalone",
+    "scope": "",
+    "theme_color": "#FFF"
+  }
+  
