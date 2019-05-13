@@ -22,6 +22,7 @@
 		let userID='<?php echo $_SESSION["userID"];?>';
 	</script>
 	<script type="text/javascript" src="main.js" defer></script>
+	<link rel="manifest" href="manifest.json">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" type="image/png" href="favicon.png" />

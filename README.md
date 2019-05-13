@@ -21,7 +21,7 @@ Kasutaja loomisel parool hash'itakse, tulevikus plaan ka sõnumeid ja e-maile sa
 
 Programmi on võimalik lisada koduekraanile.
 
-Sõnumite saatmine on ennast uuendav, st iga 2,5 sekundi tagant uuendab vestlust ennast ise, kui sõnumeid on juurde tulnud. Ise sõnumi saatmisel uueneb vestlus koheselt.
+Sõnumite saatmine on ennast uuendav, st iga 1 sekundi tagant uuendab vestlust ennast ise, kui sõnumeid on juurde tulnud. Ise sõnumi saatmisel uueneb vestlus koheselt.
  
  
 RAKENDUS EI TÖÖTA VÕRGUTA OLEKUS!
@@ -31,6 +31,8 @@ Pildid rakenduse lehtedest.
 
 https://drive.google.com/open?id=1hKQGdCT0HVAdpWFuXoAJkHHQdswrvS7r
 
-Rakendus asub lehel: https://caupo.ee/messenger (kui on üles laetud)
+Rakendus asub lehel: https://caupo.ee/messenger (ainult siin töötab Add to Home Screen, kuna ta vajab HTTPS ühendust, funktsioonid on ka kiiremad).
 
-Greeny: http://greeny.cs.tlu.ee/~priilau/iseseisev-projekt/ (greeny on aeglane, mõnikord mõni funktsioon ei jõua piisavalt kiiresti toimida)
+Greeny: http://greeny.cs.tlu.ee/~priilau/iseseisev-projekt/ (greeny on aeglane, mõnikord mõni funktsioon ei jõua piisavalt kiiresti toimida).
+
+Mõlemad rakenduse versioonid on samad.

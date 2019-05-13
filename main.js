@@ -14,8 +14,10 @@ let testFriends = [];
 let messages = [];
 let testMessages = [];
 let users = [];
+let testUsers = [];
 let chatInterval;
 let flistInterval;
+let ulistInterval;
 let friendCheck = false;
 
 let friendTbody = document.createElement("tbody");
@@ -51,8 +53,10 @@ function RenderFriend(id, email){
 				//console.log(friends[i].user_id + " & " + id);
 			}
 		}
+		DeleteAllFriendDOMs();
+		DeleteAllUserDOMs();
 		RemoveFromFriends(id);
-		UpdateFriendlist();
+		UpdateLists();
 	});
 	fEmailBlock.appendChild(fEmailLabel);
 	fEmailBlock.appendChild(removeFriendBtn);
@@ -81,7 +85,9 @@ function RenderUser(id, email){
 			alert("This user is already in your friend list!");  // ei suutnud SQL käsku välja mõelda, lahendasin probleemi alert'i kasutades
 		} else {
 			AddToFriends(id);
-			UpdateFriendlist();
+			DeleteAllFriendDOMs();
+			DeleteAllUserDOMs();
+			UpdateLists();
 			friendCheck = false;
 		}
 	});
@@ -186,9 +192,7 @@ function UpdateChat(id){
 	}, 1000);		
 }
 
-function UpdateFriendlist(){
-	DeleteAllFriendDOMs();
-	DeleteAllUserDOMs();
+function UpdateLists(){
 	GetUsers();
 	GetFriends();
 	GetTestFriends();
@@ -197,12 +201,21 @@ function UpdateFriendlist(){
 		if(friends.length != testFriends.length){
 			//console.log(intervalCheck);
 			//console.log(friends);
-			DeleteAllFriendDOMs();
 			DeleteAllUserDOMs();
 			GetUsers();
+			DeleteAllFriendDOMs();
 			GetFriends();
 		}
-	}, 1000);		
+	}, 1000);
+	ulistInterval = setInterval(function(){
+		GetTestUsers();
+		if(users.length != testUsers.length){
+			//console.log(intervalCheck);
+			//console.log(friends);
+			DeleteAllUserDOMs();
+			GetUsers();
+		}
+	}, 1000);			
 }
 
 
@@ -332,6 +345,22 @@ function GetFriends() {
     xhttp.open("GET", "functions.php?actionG=GetFriends");
 	xhttp.send();
 }
+
+function GetTestUsers() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+			let data = JSON.parse(xhttp.responseText);
+			testUsers = [];
+			for(let i in data) {
+				testUsers[i] = data[i];
+			}
+        }
+	};
+    xhttp.open("GET", "functions.php?actionG=GetUsers");
+	xhttp.send();
+}
+
 function GetUsers() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -349,7 +378,6 @@ function GetUsers() {
 }
 
 (function(){
-	GetFriends();
-	GetUsers();
+	UpdateLists();
 	CreateMsgInputBox();
 })();

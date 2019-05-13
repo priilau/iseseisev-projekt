@@ -1,11 +1,11 @@
 /*jshint esversion: 6*/
 
-let deferredPrompt;
+//let deferredPrompt;
 let homeScreenbtn = document.querySelector(".a2hs");
 
 	if ('serviceWorker' in navigator) {
 	  window.addEventListener('load', function() {
-		navigator.serviceWorker.register('https://caupo.ee/raamat/sw.js').then(function(registration) {
+		navigator.serviceWorker.register('https://caupo.ee/messenger/sw.js').then(function(registration) {
 		  // Registration was successful
 		  console.log('ServiceWorker registration successful with scope: ', registration.scope);
 		}, function(err) {
