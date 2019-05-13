@@ -10,10 +10,12 @@ document.getElementById('msg-form').addEventListener('submit', function(e) {
 });
 
 let friends = [];
+let testFriends = [];
 let messages = [];
 let testMessages = [];
 let users = [];
-let interval;
+let chatInterval;
+let flistInterval;
 let friendCheck = false;
 
 let friendTbody = document.createElement("tbody");
@@ -30,7 +32,7 @@ function RenderFriend(id, email){
 	fEmailLabel.innerText = email;
 
 	fEmailLabel.addEventListener("click", function(){
-		clearInterval(interval);
+		clearInterval(chatInterval);
 		HideFriends();
 		fEmailBlock.classList.add("active");
 		fEmailLabel.classList.add("active");
@@ -41,7 +43,8 @@ function RenderFriend(id, email){
 	removeFriendBtn.id = "button";
 	removeFriendBtn.value = "Remove friend";
 	removeFriendBtn.addEventListener("click", function(){
-		clearInterval(interval);
+		clearInterval(chatInterval);
+		clearInterval(flistInterval);
 		for(let i = 0; i < friends.length; i++){
 			if(friends[i].user_id == id){
 				DeleteAllChatDOMs();
@@ -49,10 +52,7 @@ function RenderFriend(id, email){
 			}
 		}
 		RemoveFromFriends(id);
-		DeleteAllFriendDOMs();
-		DeleteAllUserDOMs();
-		GetUsers();
-		GetFriends();
+		UpdateFriendlist();
 	});
 	fEmailBlock.appendChild(fEmailLabel);
 	fEmailBlock.appendChild(removeFriendBtn);
@@ -71,6 +71,7 @@ function RenderUser(id, email){
 	uAddBtn.id = "button";
 	uAddBtn.value = "Add to friends";
 	uAddBtn.addEventListener("click", function(){
+		clearInterval(flistInterval);
 		for(let i = 0; i < friends.length; i++){
 			if(friends[i].user_id == id){
 				friendCheck = true;
@@ -80,10 +81,7 @@ function RenderUser(id, email){
 			alert("This user is already in your friend list!");  // ei suutnud SQL käsku välja mõelda, lahendasin probleemi alert'i kasutades
 		} else {
 			AddToFriends(id);
-			DeleteAllUserDOMs();
-			DeleteAllFriendDOMs();
-			GetUsers();
-			GetFriends();
+			UpdateFriendlist();
 			friendCheck = false;
 		}
 	});
@@ -139,7 +137,7 @@ function CreateMsgInputBox(){
 	sendMsgBtn.addEventListener("click", function(){
 		if(input.value != ""){
 			intervalCheck = false;
-			clearInterval(interval);
+			clearInterval(chatInterval);
 			let activeFriend = document.querySelectorAll(".friend.active").item(0);
 			let friendID = activeFriend.id.slice(7, activeFriend.length);
 			SendMessage(input.value, friendID);
@@ -176,7 +174,7 @@ function UpdateChat(id){
 	DeleteAllChatDOMs();
 	GetMessages(id);
 	GetTestMessages(id);
-	interval = setInterval(function(){
+	chatInterval = setInterval(function(){
 		//console.log(testMessages);
 		GetTestMessages(id);
 		//console.log("tick");
@@ -184,6 +182,25 @@ function UpdateChat(id){
 			//console.log(intervalCheck);
 			DeleteAllChatDOMs();
 			GetMessages(id);
+		}
+	}, 1000);		
+}
+
+function UpdateFriendlist(){
+	DeleteAllFriendDOMs();
+	DeleteAllUserDOMs();
+	GetUsers();
+	GetFriends();
+	GetTestFriends();
+	flistInterval = setInterval(function(){
+		GetTestFriends();
+		if(friends.length != testFriends.length){
+			//console.log(intervalCheck);
+			//console.log(friends);
+			DeleteAllFriendDOMs();
+			DeleteAllUserDOMs();
+			GetUsers();
+			GetFriends();
 		}
 	}, 1000);		
 }
@@ -212,7 +229,7 @@ function DeleteAllUserDOMs() {
 		u.parentElement.removeChild(u);
 	}
 }
-
+/*
 function DeleteFriendListDOM(id) {
 	let e = document.querySelector("#friend-" + id);
 	e.parentElement.remove(e);
@@ -222,7 +239,7 @@ function DeleteUserListDOM(id) {
 	let e = document.querySelector("#user-" + id);
 	e.parentElement.remove(e);
 }
-
+*/
 function SendMessage(msg, friendID){
 	let formData = new FormData();
 	formData.append("actionP", "SendMessage");
@@ -282,6 +299,20 @@ function GetMessages(friendID) {
         }
 	};
     xhttp.open("GET", "functions.php?actionG=GetMessages&friendID=" + friendID);
+	xhttp.send();
+}
+function GetTestFriends() {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+			let data = JSON.parse(xhttp.responseText);
+			testFriends = [];
+			for(let i in data) {
+				testFriends[i] = data[i];
+			}
+        }
+	};
+    xhttp.open("GET", "functions.php?actionG=GetFriends");
 	xhttp.send();
 }
 
