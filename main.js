@@ -14,7 +14,6 @@ let messages = [];
 let testMessages = [];
 let users = [];
 let interval;
-let intervalCheck = false;
 let friendCheck = false;
 
 let friendTbody = document.createElement("tbody");
@@ -31,7 +30,6 @@ function RenderFriend(id, email){
 	fEmailLabel.innerText = email;
 
 	fEmailLabel.addEventListener("click", function(){
-		intervalCheck = false;
 		clearInterval(interval);
 		HideFriends();
 		fEmailBlock.classList.add("active");
@@ -43,7 +41,6 @@ function RenderFriend(id, email){
 	removeFriendBtn.id = "button";
 	removeFriendBtn.value = "Remove friend";
 	removeFriendBtn.addEventListener("click", function(){
-		intervalCheck = false;
 		clearInterval(interval);
 		for(let i = 0; i < friends.length; i++){
 			if(friends[i].user_id == id){
@@ -95,12 +92,12 @@ function RenderUser(id, email){
 	userlist.appendChild(uEmailContainer);
 }
 
-function CreateMessage(message, recieverId, senderId, timestamp){
+function CreateMessage(message, recieverId, senderId/*, timestamp*/){
 	let fMessageContainer = document.createElement("div");
 	fMessageContainer.id = "message";
 	let fMessage = document.createElement("div");
-	let fMsgTimestamp = document.createElement("div");
-	fMsgTimestamp.id = "timestamp";
+	//let fMsgTimestamp = document.createElement("div");
+	//fMsgTimestamp.id = "timestamp";
 	if(userID == recieverId){
 		fMessage.id = "recieved-msg";
     } else if(userID == senderId){
@@ -110,9 +107,9 @@ function CreateMessage(message, recieverId, senderId, timestamp){
 	fMsgSpan.id = "msg";
 	fMsgSpan.innerHTML = message;
 	fMessage.appendChild(fMsgSpan);
-	fMsgTimestamp.innerHTML = timestamp;
+	//fMsgTimestamp.innerHTML = timestamp;
 	fMessageContainer.appendChild(fMessage);
-	fMessageContainer.appendChild(fMsgTimestamp);
+	//fMessageContainer.appendChild(fMsgTimestamp);
 	chatbox.appendChild(fMessageContainer);
 	chatbox.scrollTop = chatbox.scrollHeight;
 }
@@ -123,6 +120,7 @@ function CreateMsgInputBox(){
 	let btnContainer = document.createElement("div");
 	btnContainer.id = "input-btns";
 	let input = document.createElement("textarea");
+	input.maxLength = "256";
 	input.placeholder = "Write a message(max 256 characters)...";
 	input.id = "input";
 	/*
@@ -142,7 +140,8 @@ function CreateMsgInputBox(){
 		if(input.value != ""){
 			intervalCheck = false;
 			clearInterval(interval);
-			let friendID = document.querySelectorAll(".friend.active").item(0).id.slice(7, 8);
+			let activeFriend = document.querySelectorAll(".friend.active").item(0);
+			let friendID = activeFriend.id.slice(7, activeFriend.length);
 			SendMessage(input.value, friendID);
 			input.value = "";
 			UpdateChat(friendID);
@@ -177,18 +176,16 @@ function UpdateChat(id){
 	DeleteAllChatDOMs();
 	GetMessages(id);
 	GetTestMessages(id);
-	intervalCheck = true;
-	if(intervalCheck){
-		interval = setInterval(function(){
-			//console.log(testMessages);
-			GetTestMessages(id);
-			if(messages.length != testMessages.length){
-				//console.log(intervalCheck);
-				DeleteAllChatDOMs();
-				GetMessages(id);
-			}
-		}, 2500);	
-	}	
+	interval = setInterval(function(){
+		//console.log(testMessages);
+		GetTestMessages(id);
+		//console.log("tick");
+		if(messages.length != testMessages.length){
+			//console.log(intervalCheck);
+			DeleteAllChatDOMs();
+			GetMessages(id);
+		}
+	}, 1000);		
 }
 
 
@@ -268,7 +265,7 @@ function GetTestMessages(friendID) {
 			}
         }
 	};
-    xhttp.open("GET", "functions.php?actionG=GetMessages&friendID=" + friendID, true);
+    xhttp.open("GET", "functions.php?actionG=GetMessages&friendID=" + friendID);
 	xhttp.send();
 }
 
@@ -280,11 +277,11 @@ function GetMessages(friendID) {
 			messages = [];
 			for(let i in data) {
 				messages[i] = data[i];
-				CreateMessage(data[i].message, data[i].recieverId, data[i].senderId, data[i].timestamp);
+				CreateMessage(data[i].message, data[i].recieverId, data[i].senderId/*, data[i].timestamp*/);
 			}
         }
 	};
-    xhttp.open("GET", "functions.php?actionG=GetMessages&friendID=" + friendID, true);
+    xhttp.open("GET", "functions.php?actionG=GetMessages&friendID=" + friendID);
 	xhttp.send();
 }
 
@@ -301,7 +298,7 @@ function GetFriends() {
 			}
         }
     };
-    xhttp.open("GET", "functions.php?actionG=GetFriends", true);
+    xhttp.open("GET", "functions.php?actionG=GetFriends");
 	xhttp.send();
 }
 function GetUsers() {
@@ -316,7 +313,7 @@ function GetUsers() {
 			}
         }
     };
-    xhttp.open("GET", "functions.php?actionG=GetUsers", true);
+    xhttp.open("GET", "functions.php?actionG=GetUsers");
 	xhttp.send();
 }
 

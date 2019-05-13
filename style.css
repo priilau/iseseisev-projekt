@@ -92,10 +92,21 @@
 }
 #message{
 	overflow-wrap: break-word;
+	text-align: left;
+	position: relative;
+	/*min-height: 125px;*/
+	padding-bottom: 125px;
+}
+
+#timestamp{
+	height: 110px;
 }
 
 #message>#recieved-msg {
-	text-align: left;
+	position: absolute;
+	height: auto;
+	max-width: 90%;
+	left: 0;
 	padding: 15px;
 	background: rgb(190, 190, 190);
 	border-top-right-radius: 15px;
@@ -104,7 +115,10 @@
 }
 
 #message>#sent-msg {
-	text-align: right;
+	position: absolute;
+	height: auto;
+	max-width: 90%;
+	right: 0;
 	padding: 15px;
 	background: rgb(140, 130, 250);
 	border-top-right-radius: 15px;

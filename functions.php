@@ -137,6 +137,7 @@
 		return $messages;
 	}
 	function listfriends($userID){
+		$userID2 = $userID; 
 		$friends = [];
 		$mysqli = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 		//$stmt = $mysqli->prepare("SELECT * FROM friendlist WHERE user_id=?");

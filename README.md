@@ -8,9 +8,9 @@ Rakendus on ehitatud täielikult käsitsi, mingisuguseid teeke pole kasutatud, k
 Rakendus töötab enamjaolt hästi, esinevad mõningad kohad, mis langetavad rakenduse esteetilist välimust.
 
 Disaini poolelt on rakendus üsnagi minimalistlik.
-
+ 
 Funktsionaalsused:
-
+ 
 Saab index lehelt sisse logida, kasutaja puudumisel on link, millele vajutades suunatakse teisele lehele, kus saab kasutajat luua.
 
 Põhiprogramm asub main lehel, kus on sõbralist, olemasolevate kasutajate nimekiri, chatbox ja sõnumi saatmise kast.
@@ -22,13 +22,15 @@ Kasutaja loomisel parool hash'itakse, tulevikus plaan ka sõnumeid ja e-maile sa
 Programmi on võimalik lisada koduekraanile.
 
 Sõnumite saatmine on ennast uuendav, st iga 2,5 sekundi tagant uuendab vestlust ennast ise, kui sõnumeid on juurde tulnud. Ise sõnumi saatmisel uueneb vestlus koheselt.
-
-
+ 
+ 
 RAKENDUS EI TÖÖTA VÕRGUTA OLEKUS!
-
-
+ 
+ 
 Pildid rakenduse lehtedest.
 
 https://drive.google.com/open?id=1hKQGdCT0HVAdpWFuXoAJkHHQdswrvS7r
 
-Rakendus asub lehel: https://caupo.ee/messenger
+Rakendus asub lehel: https://caupo.ee/messenger (kui on üles laetud)
+
+Greeny: http://greeny.cs.tlu.ee/~priilau/iseseisev-projekt/ (greeny on aeglane, mõnikord mõni funktsioon ei jõua piisavalt kiiresti toimida)
